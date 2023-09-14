@@ -28,9 +28,7 @@ def check_health_and_start_tunnel():
             if response.status_code == 200:
                 awaiting = False
                 # LT Tunnel
-                Popen(["lt", "--port", str(PORT), "--subdomain", SUBDOMAIN,"--local-host", "127.0.0.1"], shell=True)
-                #, "-o", "--print-requests"
-                print(f"LocalTunnel: https://{SUBDOMAIN}.loca.lt")
+                Popen(["lt", "--port", str(PORT), "--subdomain", SUBDOMAIN,"--local-host", "127.0.0.1", "-o", "--print-requests"], shell=True)
         except Exception as e:
             print(e)
             time.sleep(5)  
@@ -81,8 +79,10 @@ async def transcribe_file(file: UploadFile, user: str = Depends(get_current_user
     
     transcription = SpeechToTextService.audio_path_to_text(file_path)
 
-    os.remove(file_path)
-    return transcription
+    try:
+        os.remove(file_path)
+    finally:
+        return transcription
 
 @app.post("/request_transcribe_file_url")
 async def request_transcribe_file(url: str, user: str = Depends(get_current_user)):

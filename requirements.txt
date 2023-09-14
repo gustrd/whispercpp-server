@@ -1,4 +1,6 @@
-dotenv
 fastapi
+httpx
+python-dotenv
 python-multipart
+pywhispercpp
 uvicorn
