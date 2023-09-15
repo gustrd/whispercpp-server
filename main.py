@@ -13,7 +13,6 @@ from app.services.speech_to_text_service import SpeechToTextService
 load_dotenv()
 SECRET_TOKEN = os.getenv('SECRET_TOKEN')
 SUBDOMAIN = os.getenv('SUBDOMAIN')
-NPX_PATH = os.getenv('NPX_PATH')
 PORT = int(os.getenv('PORT'))
 
 app = FastAPI(port=PORT)
