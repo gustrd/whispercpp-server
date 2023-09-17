@@ -1,1 +1,1 @@
-docker run -d --name whispercpp-server-a -v ~/models/:/models/ whispercpp-server
+docker run -d --name whispercpp-server-a -p 8010:8010 -e SECRET_TOKEN=SECRET -e SUBDOMAIN=secret-domain -e PORT=8010 -e STT_MODEL=/models/ggml-base.bin -v /home/ubuntu/models/:/models/ -e STT_THREADS=1 whispercpp-server
