@@ -1,7 +1,7 @@
 FROM python:bullseye
 
 RUN apt-get update && \
-    apt-get install -y python-dotenv && \   
+    apt-get install -y python3-dotenv && \   
     apt-get install -y ffmpeg && \
     apt-get install -y nodejs npm && \
     apt-get upgrade && \
